@@ -18,11 +18,13 @@ const ErrorPage = () => {
   return (
     <div className="mt-16 pb-4 pt-16 px-16 text-center flex flex-col items-center">
       <div>
-        <p className="text-2xl font-bold py-2 pb-4 text-red-500">Error: </p>
+        <p className="text-2xl font-bold py-2 pb-4 text-red-500 dark:text-red-600">
+          Error:{" "}
+        </p>
       </div>
       <div>
-        <pre class="bg-gray-100 p-4 px-8 rounded-md">
-          <code class="text-sm font-mono whitespace-pre-wrap">
+        <pre class="p-4 px-8 rounded-md bg-gray-100 dark:bg-gray-700">
+          <code class="text-sm font-mono whitespace-pre-wrap dark:text-gray-300">
             <p>{error}</p>
           </code>
         </pre>
