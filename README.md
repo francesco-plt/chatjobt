@@ -18,4 +18,4 @@ $ npm i
 $ npm start
 ```
 
-Or just visit [ChatJoBT](https://646dfa90f2b21a004e44c3f7--luminous-squirrel-d6c7f6.netlify.app/).
+Or just visit [ChatJoBT](https://luminous-squirrel-d6c7f6.netlify.app/).
