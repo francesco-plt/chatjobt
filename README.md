@@ -1,5 +1,7 @@
 # ChatJoBT
 
+This is a simple webapp written using ReactJS which gathers some data and process it via OpenAI APIs. ~You can achieve the same exact result by simply putting the data directly into the ChatGPT textbox and pressing the enter key on your keyboard.~
+
 ## Description
 Just read this pitch ChatGPT itself wrote:
 
@@ -10,8 +12,10 @@ Just read this pitch ChatGPT itself wrote:
 ## Usage
 
 ``` bash
+$ git clone https://github.com/francesco-plt/chatjobt.git
+$ cd chatjobt
 $ npm i
 $ npm start
 ```
 
-Or just visit [ChatJoBT](https://646dfa90f2b21a004e44c3f7--luminous-squirrel-d6c7f6.netlify.app/).
+Or just visit [ChatJoBT](https://luminous-squirrel-d6c7f6.netlify.app/).
