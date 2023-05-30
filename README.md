@@ -19,3 +19,5 @@ $ cd chatjobt
 $ npm i
 $ npm start
 ```
+
+<img src="screen.png" ref="" width="66%"></img>
