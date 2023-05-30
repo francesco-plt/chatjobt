@@ -1,6 +1,6 @@
 # ChatJoBT
 
-This is a simple webapp written using ReactJS which gathers some data and process it via OpenAI APIs. ~You can achieve the same exact result by simply putting the data directly into the ChatGPT textbox and pressing the enter key on your keyboard.~
+This is a simple webapp written for learning purposes using ReactJS, It gathers some data and processes it via OpenAI APIs. ~Note that you can achieve the same exact result by simply putting the data directly into the ChatGPT textbox and pressing the enter key on your keyboard.~
 
 ## Description
 Just read this pitch ChatGPT itself wrote:
@@ -17,5 +17,3 @@ $ cd chatjobt
 $ npm i
 $ npm start
 ```
-
-Or just visit [ChatJoBT](https://luminous-squirrel-d6c7f6.netlify.app/).
