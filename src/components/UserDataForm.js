@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./index.css";
+import "./../index.css";
 
 function UserDataForm({ onChange }) {
   const [formData, setFormData] = useState({
@@ -52,7 +52,9 @@ function UserDataForm({ onChange }) {
     <form className="max-w-md mx-auto">
       {formFields.map((field) => (
         <label key={field.name} className="block mb-2 py-1">
-          <span className="text-gray-700">{field.label}:</span>
+          <span className="text-gray-700 dark:text-gray-200">
+            {field.label}:
+          </span>
           <input
             type={field.type}
             id={field.name}
@@ -66,7 +68,7 @@ function UserDataForm({ onChange }) {
               }));
               onChange(field.name, e.target.value);
             }}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
           />
         </label>
       ))}

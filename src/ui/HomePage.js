@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import OpenAIForm from "./OpenAIForm";
-import UserDataForm from "./UserDataForm";
-import CompanyDataForm from "./CompanyDataForm";
-import LoadingButton from "./LoadingButton";
+import OpenAIForm from "./../components/OpenAIForm";
+import UserDataForm from "./../components/UserDataForm";
+import CompanyDataForm from "./../components/CompanyDataForm";
+import LoadingButton from "./../components/LoadingButton";
+import "./../index.css";
 
-function formatPayload(data) {
+function generatePrompt(data) {
   return `
     You are a ${data.jobTitle} who is looking for a job.
     You found a job offering, but you need to apply for it.
@@ -33,15 +34,12 @@ function formatPayload(data) {
   `;
 }
 
-function FormAggregator() {
-  const [formData, setFormData] = useState({});
+function HomePage() {
+  const navigate = useNavigate(); // redirection after form submission
 
-  // for redirection after form submission
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // submit button state
 
-  // submit button state
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [formData, setFormData] = useState({}); // form data state
   const handleFormChange = (name, value) => {
     setFormData((prevValues) => ({
       ...prevValues,
@@ -49,9 +47,13 @@ function FormAggregator() {
     }));
   };
 
-  // application logic: send the payload to the API
-  const sendPayload = async () => {
-    // check if all the fields are filled
+  // application logic: contacting OpenAI APIs
+  const callApi = async () => {
+    // OpenAI API parameters
+    const chatApiUrl = "https://api.openai.com/v1/chat/completions";
+    const maxTokens = 300;
+    const temperature = 0.9;
+
     const requiredFields = [
       "apiKey",
       "model",
@@ -69,11 +71,6 @@ function FormAggregator() {
       "jobDescription",
     ];
 
-    // default model
-    if (!formData.model) {
-      formData.model = "gpt-3.5-turbo";
-    }
-    // default language
     if (!formData.language) {
       formData.language = "English";
     }
@@ -86,16 +83,17 @@ function FormAggregator() {
     }
 
     setIsLoading(true); // submit button state
-    fetch("https://api.openai.com/v1/chat/completions", {
+
+    fetch(chatApiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${formData.apiKey}`,
       },
       body: JSON.stringify({
-        messages: [{ role: "user", content: formatPayload(formData) }],
-        max_tokens: 150,
-        temperature: 0.9,
+        messages: [{ role: "user", content: generatePrompt(formData) }],
+        max_tokens: maxTokens,
+        temperature: temperature,
         model: formData.model || "gpt-3.5-turbo",
       }),
     })
@@ -139,27 +137,49 @@ function FormAggregator() {
   };
 
   return (
-    <div>
-      <div className="p-4">
-        <OpenAIForm onChange={handleFormChange} />
-        <div className="flex pt-4">
-          <div className="p-4 w-1/2">
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-2xl font-bold py-4">Personal Information</p>
-              <UserDataForm onChange={handleFormChange} />
-            </div>
-          </div>
-          <div className="p-4 w-1/2">
-            <div className="flex flex-col justify-center items-center">
-              <p className="text-2xl font-bold py-4">Company Information</p>
-              <CompanyDataForm onChange={handleFormChange} />
-            </div>
-          </div>
+    <div className="flex flex-col min-h-screen px-4">
+      <div className="p-4 pt-16 flex flex-col items-center text-center px-16">
+        <div>
+          <p className="font-bold text-lg py-4 dark:text-white">
+            Privacy Notice:
+          </p>
+        </div>
+        <div className="text-center flex flex-col items-center">
+          <p className="px-16 w-4/6 dark:text-white">
+            Everything is processed locally in your browser. No data is sent to
+            any server, except for the OpenAI API call which is sent directly to
+            OpenAI for processing by them. The source of this website is
+            published{" "}
+            <a
+              href="https://github.com/francesco-plt/chatjobt/"
+              className="text-blue-500"
+            >
+              here
+            </a>
+            .
+          </p>
         </div>
       </div>
-      <LoadingButton onClick={sendPayload} isLoading={isLoading} />
+      <div className="p-4 pt-16">
+        <OpenAIForm onChange={handleFormChange} />
+        <div className="flex items-start pt-4">
+          <div className="p-4 w-1/2 flex flex-col justify-center items-center">
+            <p className="text-2xl font-bold py-4 dark:text-white">
+              Personal Informations
+            </p>
+            <UserDataForm onChange={handleFormChange} />
+          </div>
+          <div className="p-4 w-1/2 flex flex-col justify-center items-center">
+            <p className="text-2xl font-bold py-4 dark:text-white">
+              Company Informations
+            </p>
+            <CompanyDataForm onChange={handleFormChange} />
+          </div>
+        </div>
+        <LoadingButton onClick={callApi} isLoading={isLoading} />
+      </div>
     </div>
   );
 }
 
-export default FormAggregator;
+export default HomePage;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./index.css";
+import "./../index.css";
 
 function CompanyDataForm({ onChange }) {
   const [formData, setFormData] = useState({
@@ -52,8 +52,10 @@ function CompanyDataForm({ onChange }) {
         }
 
         return (
-          <label key={field.name} className="block  py-1 mb-2">
-            <span className="text-gray-700">{field.label}:</span>
+          <label key={field.name} className="block py-1 mb-2">
+            <span className="text-gray-700 dark:text-gray-200">
+              {field.label}:
+            </span>
             <input
               type={field.type}
               id={field.name}
@@ -67,13 +69,15 @@ function CompanyDataForm({ onChange }) {
                 }));
                 onChange(field.name, e.target.value);
               }}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
             />
           </label>
         );
       })}
       <label className="block mb-2">
-        <span className="text-gray-700">Job Description:</span>
+        <span className="text-gray-700 dark:text-gray-200">
+          Job Description:
+        </span>
         <textarea
           name="jobDescription"
           id="jobDescription"
@@ -86,7 +90,7 @@ function CompanyDataForm({ onChange }) {
             }));
             onChange("jobDescription", e.target.value);
           }}
-          className="h-64 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="h-52 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
         />
       </label>
       <br />

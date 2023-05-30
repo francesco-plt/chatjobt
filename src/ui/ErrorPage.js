@@ -16,7 +16,7 @@ const ErrorPage = () => {
   }
 
   return (
-    <div className="pb-4 pt-16 px-16 text-center flex flex-col items-center">
+    <div className="mt-16 pb-4 pt-16 px-16 text-center flex flex-col items-center">
       <div>
         <p className="text-2xl font-bold py-2 pb-4 text-red-500">Error: </p>
       </div>

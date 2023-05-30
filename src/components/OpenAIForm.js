@@ -16,7 +16,10 @@ const OpenAIForm = ({ onChange }) => {
   return (
     <form className="max-w-md mx-auto flex">
       <div className="mb-4 w-1/2 px-4">
-        <label className="block mb-2 text-gray-800" htmlFor="api-key">
+        <label
+          className="block mb-2 text-gray-800 dark:text-gray-200"
+          htmlFor="api-key"
+        >
           API Key:
         </label>
         <input
@@ -29,11 +32,14 @@ const OpenAIForm = ({ onChange }) => {
             onChange("apiKey", e.target.value);
           }}
           value={apiKey}
-          className="w-full px-8 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-8 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
         />
       </div>
       <div className="mb-4 w-1/2 px-4 ">
-        <label className="block mb-2 text-gray-800" htmlFor="model">
+        <label
+          className="block mb-2 text-gray-800 dark:text-gray-200"
+          htmlFor="model"
+        >
           Model:
         </label>
         <select
@@ -44,7 +50,7 @@ const OpenAIForm = ({ onChange }) => {
             setModel(e.target.value);
             onChange("model", e.target.value);
           }}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500 dark:text-white"
         >
           <option value="">Select a model</option>
           {modelOptions.map((option) => (
