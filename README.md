@@ -11,6 +11,8 @@ Just read this pitch ChatGPT itself wrote:
 
 ## Usage
 
+Go [here](https://chatjobt.site/), or paste the following in the terminal:
+
 ``` bash
 $ git clone https://github.com/francesco-plt/chatjobt.git
 $ cd chatjobt
