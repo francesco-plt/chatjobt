@@ -32,7 +32,7 @@ const OpenAIForm = ({ onChange }) => {
             onChange("apiKey", e.target.value);
           }}
           value={apiKey}
-          className="w-full px-8 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
+          className="w-full px-8 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500 dark:text-white"
         />
       </div>
       <div className="mb-4 w-1/2 px-4 ">
