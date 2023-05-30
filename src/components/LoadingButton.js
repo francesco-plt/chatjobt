@@ -10,7 +10,7 @@ const LoadingButton = ({ onClick, isLoading }) => {
       <button
         onClick={handleClick}
         disabled={isLoading}
-        className="w-1/4 bg-green-400 hover:bg-green-500 text-white dark:text-gray-800 font-bold py-3 px-4 rounded-lg shadow-md"
+        className="bg-green-400 hover:bg-green-500 text-white dark:text-gray-800 font-bold py-3 px-4 rounded-lg shadow-md"
       >
         {isLoading ? "Loading..." : "Generate Cover Letter"}
       </button>

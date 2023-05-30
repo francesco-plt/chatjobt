@@ -12,14 +12,16 @@ const ResultPage = () => {
     <div className="flex flex-col justify-center items-center p-4">
       <h1 className="text-4xl font-bold py-16 dark:text-white">Cover Letter</h1>
       <div
-        className="w-4/6 p-16 border dark:border-gray-600 rounded-md shadow"
+        className="lg:w-4/6 px-4 lg:p-16 border dark:border-gray-600 rounded-md shadow"
         id="document"
       >
         <div className="mt-4">
           {lines.map((line, index) => (
             <div className="dark:text-gray-200">
               <p key={index}>{line}</p>
-              <br />
+              <div className="h-2">
+                <br />
+              </div>
             </div>
           ))}
         </div>

@@ -49,10 +49,9 @@ function HomePage() {
 
   // application logic: contacting OpenAI APIs
   const callApi = async () => {
-    // OpenAI API parameters
+    /* OpenAI API parameters */
     const chatApiUrl = "https://api.openai.com/v1/chat/completions";
-    const maxTokens = 300;
-    const temperature = 0.9;
+    // const temperature = 0.9;
 
     const requiredFields = [
       "apiKey",
@@ -92,8 +91,6 @@ function HomePage() {
       },
       body: JSON.stringify({
         messages: [{ role: "user", content: generatePrompt(formData) }],
-        max_tokens: maxTokens,
-        temperature: temperature,
         model: formData.model || "gpt-3.5-turbo",
       }),
     })
@@ -145,7 +142,7 @@ function HomePage() {
           </p>
         </div>
         <div className="text-center flex flex-col items-center">
-          <p className="px-16 w-4/6 dark:text-white">
+          <p className="lg:px-16 lg:w-4/6 dark:text-white">
             Everything is processed locally in your browser. No data is sent to
             any server, except for the OpenAI API call which is sent directly to
             OpenAI for processing by them. The source of this website is
