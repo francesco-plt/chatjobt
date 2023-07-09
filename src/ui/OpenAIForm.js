@@ -17,7 +17,7 @@ const OpenAIForm = ({ onChange }) => {
     <form className="max-w-md mx-auto flex">
       <div className="mb-4 w-1/2 px-4">
         <label
-          className="block mb-2 text-gray-800 dark:text-gray-200"
+          className="block mb-2 text-zinc-800 dark:text-zinc-200"
           htmlFor="api-key"
         >
           API Key:
@@ -32,12 +32,12 @@ const OpenAIForm = ({ onChange }) => {
             onChange("apiKey", e.target.value);
           }}
           value={apiKey}
-          className="w-full px-8 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500 dark:text-white"
+          className="w-full px-8 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-zinc-700 dark:border-zinc-500 dark:text-white"
         />
       </div>
       <div className="mb-4 w-1/2 px-4 ">
         <label
-          className="block mb-2 text-gray-800 dark:text-gray-200"
+          className="block mb-2 text-zinc-800 dark:text-zinc-200"
           htmlFor="model"
         >
           Model:
@@ -50,7 +50,7 @@ const OpenAIForm = ({ onChange }) => {
             setModel(e.target.value);
             onChange("model", e.target.value);
           }}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500 dark:text-white"
+          className="w-full px-4 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-zinc-700 dark:border-zinc-500 dark:text-white"
         >
           <option value="">Select a model</option>
           {modelOptions.map((option) => (

@@ -8,20 +8,20 @@ const Header = () => {
           <div className="content-center">
             <a
               href="/"
-              className="font-bold text-2xl text-white dark:text-gray-800 hover:text-gray-200"
+              className="font-bold text-2xl text-white dark:text-zinc-800 hover:text-zinc-200 dark:hover:text-zinc-600"
             >
               ChatJoBT
             </a>
-            <p className="text-sm text-gray-200 dark:text-gray-600">
+            <p className="text-sm text-zinc-200 dark:text-zinc-600">
               Just fill the form and get your cover letter in seconds!
             </p>
           </div>
           <div className="flex items-center">
             <a
-              href="https://github.com/francesco-plt/chatjobt"
-              className="text-white hover:text-gray-200 dark:text-gray-700 ml-6"
+              href="https://github.com/francesco-plt"
+              className="text-white hover:text-zinc-200 dark:text-zinc-800 dark:hover:text-zinc-600 ml-6"
             >
-              GitHub
+              My GitHub
             </a>
           </div>
         </div>

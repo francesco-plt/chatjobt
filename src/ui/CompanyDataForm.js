@@ -53,7 +53,7 @@ function CompanyDataForm({ onChange }) {
 
         return (
           <label key={field.name} className="block py-1 mb-2">
-            <span className="text-gray-700 dark:text-gray-200">
+            <span className="text-zinc-700 dark:text-zinc-200">
               {field.label}:
             </span>
             <input
@@ -61,6 +61,7 @@ function CompanyDataForm({ onChange }) {
               id={field.name}
               name={field.name}
               placeholder={field.placeholder}
+              required={field.required}
               value={formData[field.name]}
               onChange={(e) => {
                 setFormData((prevData) => ({
@@ -69,13 +70,13 @@ function CompanyDataForm({ onChange }) {
                 }));
                 onChange(field.name, e.target.value);
               }}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
+              className="w-full px-4 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-zinc-700 dark:border-zinc-500 dark:text-zinc-200"
             />
           </label>
         );
       })}
       <label className="block mb-2">
-        <span className="text-gray-700 dark:text-gray-200">
+        <span className="text-zinc-700 dark:text-zinc-200">
           Job Description:
         </span>
         <textarea
@@ -90,7 +91,7 @@ function CompanyDataForm({ onChange }) {
             }));
             onChange("jobDescription", e.target.value);
           }}
-          className="h-52 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-500"
+          className="h-52 w-full px-4 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-zinc-700 dark:border-zinc-500"
         />
       </label>
       <br />
