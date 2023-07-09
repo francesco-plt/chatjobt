@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import OpenAIForm from "./../components/OpenAIForm";
-import UserDataForm from "./../components/UserDataForm";
-import CompanyDataForm from "./../components/CompanyDataForm";
-import LoadingButton from "./../components/LoadingButton";
-import ErrorMessage from "./../components/ErrorMessage";
+import OpenAIForm from "../ui/OpenAIForm";
+import UserDataForm from "../ui/UserDataForm";
+import CompanyDataForm from "../ui/CompanyDataForm";
+import LoadingButton from "../ui/LoadingButton";
+import ErrorMessage from "../ui/ErrorMessage";
 import "./../index.css";
 
 function generatePrompt(data) {
@@ -43,7 +43,6 @@ function HomePage() {
 
   const handleErrors = (errorMessages) => {
     // max 5 errors
-    // setErrors((prevErrors) => [...prevErrors, ...errorMessages]);
     setErrors((prevErrors) => [...prevErrors, ...errorMessages].slice(-5));
   };
 
@@ -54,6 +53,20 @@ function HomePage() {
       return newErrors;
     });
   };
+
+  // close error popups after 5 seconds
+  useEffect(() => {
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        // handleCloseError(errors.length - 1);
+        setErrors([]);
+      }, 5000); // 5000 milliseconds = 5 seconds
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [errors]);
 
   const [formData, setFormData] = useState({}); // form data state
   const handleFormChange = (name, value) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import CopyButton from "../components/CopyButton";
+import CopyButton from "../ui/CopyButton";
 
 const ResultPage = () => {
   // retrieving data from location state
