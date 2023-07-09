@@ -160,7 +160,7 @@ function HomePage() {
   return (
     <div className="flex flex-col min-h-screen px-4">
       {errors.length > 0 && (
-        <div className="fixed bottom-0 right-0 m-4 flex flex-col w-1/3">
+        <div className="fixed bottom-0 right-0 m-4 flex flex-col md:w-1/3">
           {errors.map((error, index) => (
             <ErrorMessage
               key={index}
