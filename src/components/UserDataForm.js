@@ -9,42 +9,59 @@ function UserDataForm({ onChange }) {
     city: "",
     phoneNumber: "",
     email: "",
-    language: "",
+    language: "English",
   });
 
   // Define the list of form fields
   const formFields = [
-    { label: "Name", name: "name", type: "text", placeholder: "John" },
-    { label: "Surname", name: "surname", type: "text", placeholder: "Doe" },
+    {
+      label: "Name",
+      name: "name",
+      type: "text",
+      placeholder: "John",
+      required: true,
+    },
+    {
+      label: "Surname",
+      name: "surname",
+      type: "text",
+      placeholder: "Doe",
+      required: true,
+    },
     {
       label: "Address",
       name: "address",
       type: "text",
       placeholder: "123 Main St",
+      required: false,
     },
     {
       label: "City, State, ZIP",
       name: "city",
       type: "text",
       placeholder: "New York, NY 10001",
+      required: false,
     },
     {
       label: "Phone Number",
       name: "phoneNumber",
       type: "tel",
       placeholder: "555-555-5555",
+      required: false,
     },
     {
       label: "Email",
       name: "email",
       type: "email",
       placeholder: "example@gmail.com",
+      required: false,
     },
     {
       label: "Language",
       name: "language",
       type: "text",
       placeholder: "English",
+      required: true,
     },
   ];
 
@@ -61,6 +78,7 @@ function UserDataForm({ onChange }) {
             name={field.name}
             placeholder={field.placeholder}
             value={formData[field.name]}
+            required={field.required}
             onChange={(e) => {
               setFormData((prevData) => ({
                 ...prevData,

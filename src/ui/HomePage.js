@@ -4,6 +4,7 @@ import OpenAIForm from "./../components/OpenAIForm";
 import UserDataForm from "./../components/UserDataForm";
 import CompanyDataForm from "./../components/CompanyDataForm";
 import LoadingButton from "./../components/LoadingButton";
+import ErrorMessage from "./../components/ErrorMessage";
 import "./../index.css";
 
 function generatePrompt(data) {
@@ -38,6 +39,21 @@ function HomePage() {
   const navigate = useNavigate(); // redirection after form submission
 
   const [isLoading, setIsLoading] = useState(false); // submit button state
+  const [errors, setErrors] = useState([]); // Errors state variable
+
+  const handleErrors = (errorMessages) => {
+    // max 5 errors
+    // setErrors((prevErrors) => [...prevErrors, ...errorMessages]);
+    setErrors((prevErrors) => [...prevErrors, ...errorMessages].slice(-5));
+  };
+
+  const handleCloseError = (index) => {
+    setErrors((prevErrors) => {
+      const newErrors = [...prevErrors];
+      newErrors.splice(index, 1);
+      return newErrors;
+    });
+  };
 
   const [formData, setFormData] = useState({}); // form data state
   const handleFormChange = (name, value) => {
@@ -51,7 +67,6 @@ function HomePage() {
   const callApi = async () => {
     /* OpenAI API parameters */
     const chatApiUrl = "https://api.openai.com/v1/chat/completions";
-    // const temperature = 0.9;
 
     const requiredFields = [
       "apiKey",
@@ -76,8 +91,7 @@ function HomePage() {
 
     for (const field of requiredFields) {
       if (!formData[field]) {
-        navigate("/error", { state: { error: `Missing field: ${field}` } });
-        return;
+        handleErrors([`${field} is required`]);
       }
     }
 
@@ -96,10 +110,13 @@ function HomePage() {
     })
       .then((response) => response.json())
       .then((data) => {
+        // debug
+        console.log("errors", errors);
+
         if (data.error) {
+          setIsLoading(false); // submit button state
           console.error("API Error:", data.error);
-          navigate("/error", { state: { error: data.error } });
-          return;
+          handleErrors([data.error.message]);
         }
 
         console.log("API Response:", data);
@@ -128,13 +145,25 @@ function HomePage() {
         navigate("/result", { state: { letterData: coverLetter } });
       })
       .catch((error) => {
+        setIsLoading(false); // submit button state
         console.error("API Error:", error);
-        navigate("/error", { state: { error } });
+        handleErrors([error.message]);
       });
   };
 
   return (
     <div className="flex flex-col min-h-screen px-4">
+      {errors.length > 0 && (
+        <div className="fixed bottom-0 right-0 m-4 flex flex-col w-1/3">
+          {errors.map((error, index) => (
+            <ErrorMessage
+              key={index}
+              error={error}
+              onClose={() => handleCloseError(index)}
+            />
+          ))}
+        </div>
+      )}
       <div className="p-4 pt-16 flex flex-col items-center text-center px-16">
         <div>
           <p className="font-bold text-lg py-4 dark:text-white">
